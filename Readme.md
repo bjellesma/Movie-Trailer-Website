@@ -24,4 +24,4 @@
   <p>This program is a project for Udacity's full stack developer nanodegree program.
   This particular project was authored by William Jellesma</p>
 <a name="Screenshot"><h1>Screenshot</h1></a>
-<img src="Sample.png" />
+<img src="Sample.PNG" />
