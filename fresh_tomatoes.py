@@ -1,4 +1,7 @@
-import webbrowser
+"""
+This module was initially made by udacity
+modified slightly to fit circumstances
+"""import webbrowser
 import os
 import re
 
@@ -170,6 +173,7 @@ def create_tiles_content(movies, shows):
             movie_storyline=movie.storyline,
             movie_stars=movie.stars
         )
+    #append tiles with tv shows
     content += '<h1>TV Shows</h1>'
     for show in shows:
         content += tv_show_tile_content.format(

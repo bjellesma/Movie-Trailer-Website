@@ -1,6 +1,8 @@
 """
 module: media
-TODO insert licence boiler plate code
+author: William Jellesma
+
+This module provides the three classes necessary to rendered the movie webpage
 """
 import webbrowser
 
@@ -13,6 +15,8 @@ class Video():
         title: A string containing the title of the Video
         duration: An integer (in seconds) of the duration of the Video
         stars: An integer (from 0 to 5) of the rating that you've given the Video
+        storyline: A string containing the main story summation
+        poster_image: A string containing a url of an image
     """
     def __init__(self, title, duration, stars, storyline, poster_image):
         self.title = title
@@ -30,7 +34,17 @@ class Video():
     def print_duration(self):
         print("Duration: "+str(self.duration))
 
+    def print_storyline(self):
+        print("Storyline: "+self.storyline)
+
+    def show_poster(self):
+        webbrowser.open(self.poster_image_url)
+
+
     def convert_duration(self):
+        """
+        Function to convert raw seconds to H-M-S Format
+        """
         seconds=self.duration
         minutes=seconds/60
         seconds=seconds%60
@@ -38,16 +52,22 @@ class Video():
         minutes=minutes%60
         self.duration="Runtime: "+str(hours) + "H " + str(minutes) + "M " + str(seconds) + "S"
 
-    def print_storyline(self):
-        print("Storyline: "+self.storyline)
-
-    def show_poster(self):
-        webbrowser.open(self.poster_image_url)
 
 class Movie(Video):
     """
     This class is designed to be used in conjunction with the fresh_tomatoes module
     This contains the schema for creating a new movie object
+
+    Inherits:
+        Video
+
+    Attributes:
+        title: A string containing the title of the Video
+        duration: An integer (in seconds) of the duration of the Video
+        stars: An integer (from 0 to 5) of the rating that you've given the Video
+        storyline: A string containing the main story summation
+        poster_image: A string containing a url of an image
+        trailer_youtube: A string containing a link to the youtube trailer
     """
     #the following is an example of a class variable
     VALID_RATINGS = ["G", "PG", "PG-13", "R"]
@@ -67,7 +87,17 @@ class Movie(Video):
 class TV_Show(Video):
     """
     Class for creating TV shows
-    Inherits the Video class
+
+    Inherits:
+        Video
+
+    Attributes:
+        title: A string containing the title of the Video
+        duration: An integer (in seconds) of the duration of the Video
+        stars: An integer (from 0 to 5) of the rating that you've given the Video
+        storyline: A string containing the main story summation
+        poster_image: A string containing a url of an image
+        trailer_youtube: A string containing a link to the youtube trailer
     """
     def __init__(self, tv_show_title, tv_show_runtime, tv_show_stars,
                 tv_show_storyline, poster_image, episodes):
