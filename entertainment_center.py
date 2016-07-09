@@ -1,6 +1,26 @@
 #!/usr/bin/env
 """
 This is the main file of the program that will open a webpage with a list of favorited movies
+
+Adding Objects:
+    The format for adding objects is to assign a variable name to media.Movie or media.TV_Show
+    and to use the proper argument list listed below.
+
+Arg List for media.Movie:
+    Movie Title: string
+    Movie Duration (in seconds): integer
+    Movie Rating (out of 5): integer
+    Movie Storyline: String
+    Movie Poster URL: string
+    Movie Trailer: string
+
+Arg List for media.TV_Show:
+    TV Show Title: string
+    TV Show Runtime (in seconds): integer
+    TV Show Rating (out of 5): integer
+    TV Show Storyline: String
+    TV Show Poster URL: string
+    TV Show Episodes: integer
 """
 import media
 import fresh_tomatoes
@@ -40,13 +60,13 @@ def initObjects():
                         5,
                         "Detention!",
                         "https://cauchonphotoclass.edublogs.org/files/2013/06/the-breakfast-club-movie-poster-1985-1020468204-tfrwg0.jpg",
-                        "https://www.youtube.com/watch?v=n7wIEC4glrk")
+                        "https://www.youtube.com/watch?v=ZXzlCpHK3-I")
 
     dark_matter = media.TV_Show("Dark Matter",
                             3600,
                             4,
                             "A story of six people aboard a spaceship who have no idea who they are",
-                            "http://nerdystuff.com/wp-content/uploads/2015/07/DarkMatter1.jpg",
+                            "http://sharingseries.com/wp-content/uploads/2015/05/Dark-Matter-poster-SyFy-season-1-2015.jpg",
                             15)
     seinfeld = media.TV_Show("Seinfeld",
                         1800,
@@ -58,7 +78,7 @@ def initObjects():
                         3600,
                         5,
                         "A story of 7 kings vying for a seat on the iron throne",
-                        "http://i.lv3.hbo.com/custom-assets/img/free-episodes/game-of-thrones-1349.jpg",
+                        "http://coppergoose.com/static/uploaded/eggs/game-of-thrones-book-1.png",
                         60)
 
     #Simply add movies to the movie list and tv shows to the tv shows list

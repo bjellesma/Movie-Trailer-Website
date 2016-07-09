@@ -1,7 +1,8 @@
 """
 This module was initially made by udacity
 modified slightly to fit circumstances
-"""import webbrowser
+"""
+import webbrowser
 import os
 import re
 
@@ -21,6 +22,8 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background:#000;
+            color:red;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
