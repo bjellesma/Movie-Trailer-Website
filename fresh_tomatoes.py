@@ -42,6 +42,14 @@ main_page_head = '''
             background-color: #EEE;
             cursor: pointer;
         }
+        .show-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .show-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
@@ -111,7 +119,7 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+      {tiles}
     </div>
   </body>
 </html>
@@ -121,16 +129,29 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
+    <img src="{movie_poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
-    <h3>{movie_duration}</h3>
+    <p>{movie_duration}</p>
+    <p>Story: {movie_storyline}</p>
+    <p>Stars: {movie_stars}</p>
 </div>
 '''
 
+# A single tv show entry html template
+tv_show_tile_content = '''
+<div class="col-md-6 col-lg-4 show-tile text-center">
+    <img src="{tv_show_poster_image_url}" width="220" height="342">
+    <h2>{tv_show_title}</h2>
+    <p>{tv_show_duration}</p>
+    <p>Story: {tv_show_storyline}</p>
+    <p>Stars: {tv_show_stars}</p>
+    <p>Episodes: {tv_show_episodes}</p>
+</div>
+'''
 
-def create_movie_tiles_content(movies):
+def create_tiles_content(movies, shows):
     # The HTML content for this section of the page
-    content = ''
+    content = '<h1>Movies</h1>'
     for movie in movies:
         # Extract the youtube ID from the url
         youtube_id_match = re.search(
@@ -144,19 +165,31 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             movie_title=movie.title,
             movie_duration=movie.duration,
-            poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            movie_poster_image_url=movie.poster_image_url,
+            trailer_youtube_id=trailer_youtube_id,
+            movie_storyline=movie.storyline,
+            movie_stars=movie.stars
+        )
+    content += '<h1>TV Shows</h1>'
+    for show in shows:
+        content += tv_show_tile_content.format(
+            tv_show_title=show.title,
+            tv_show_duration=show.duration,
+            tv_show_poster_image_url=show.poster_image_url,
+            tv_show_storyline=show.storyline,
+            tv_show_stars=show.stars,
+            tv_show_episodes=show.episodes
         )
     return content
 
 
-def open_movies_page(movies):
+def open_movies_and_tv_page(movies, shows):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
 
-    # Replace the movie tiles placeholder generated content
+    # Replace the tiles placeholder generated content
     rendered_content = main_page_content.format(
-        movie_tiles=create_movie_tiles_content(movies))
+        tiles=create_tiles_content(movies, shows))
 
     # Output the file
     output_file.write(main_page_head + rendered_content)

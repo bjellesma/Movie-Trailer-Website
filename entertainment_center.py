@@ -21,14 +21,42 @@ bClub = media.Movie("Breakfast Club",
                     "https://cauchonphotoclass.edublogs.org/files/2013/06/the-breakfast-club-movie-poster-1985-1020468204-tfrwg0.jpg",
                     "https://www.youtube.com/watch?v=n7wIEC4glrk")
 
-def prep_movies(self):
+dark_matter = media.TV_Show("Dark Matter",
+                        3600,
+                        4,
+                        "A story of six people aboard a spaceship who have no idea who they are",
+                        "http://nerdystuff.com/wp-content/uploads/2015/07/DarkMatter1.jpg",
+                        15)
+seinfeld = media.TV_Show("Seinfeld",
+                    1800,
+                    4,
+                    "A show about nothing",
+                    "http://www.sonypictures.com/tv/seinfeld/assets/images/onesheet.jpg",
+                    180)
+game_of_thrones = media.TV_Show("Game of Thrones",
+                    3600,
+                    5,
+                    "A story of 7 kings vying for a seat on the iron throne",
+                    "http://i.lv3.hbo.com/custom-assets/img/free-episodes/game-of-thrones-1349.jpg",
+                    60)
+
+def prep_movies(movies):
     """
     This function will prepare the movies for proper rendering
     """
     for movie in movies:
         movie.convert_duration()
 
+def prep_shows(shows):
+    """
+    This function will prepare the movies for proper rendering
+    """
+    for show in shows:
+        show.convert_duration()
+
 #Simply add movies to the movie list and tv shows to the tv shows list
 movies = [toy_story, dDarko, bClub]
+tv_shows = [dark_matter, seinfeld, game_of_thrones]
 prep_movies(movies)
-fresh_tomatoes.open_movies_page(movies)
+prep_shows(tv_shows)
+fresh_tomatoes.open_movies_and_tv_page(movies, tv_shows)
