@@ -21,6 +21,13 @@ Arg List for media.TV_Show:
     TV Show Storyline: String
     TV Show Poster URL: string
     TV Show Episodes: integer
+
+IMDbpY Integration:
+    Optionally, An IMDb API can be used to retrieve certain information
+    the advantage being that their information is always up to date.
+    Several variables are used for this purpose in initObjects()
+    The variables follow the naming scheme of [object_name]ID for the IMDb ID
+    and [object_name]_imdb for the imdb movie object
 """
 import media
 import fresh_tomatoes
@@ -44,50 +51,62 @@ def initObjects():
     """
     Function to initialize sample objects
     """
+    #imdb objects
+    #you can use the imdb api to help grab information rather than looking it up
+    #full documentation at imdbpy.sourceforge.net
     i = imdb.IMDb()
-    toyStoryID = '0114709'
-    dDarkoID = '0246578'
-    bClubID = '0088847'
-    #dark_matter_ID = '0159076'
-    #seinfeld_ID = '0098904'
-    #game_of_Thrones_ID = '0944947'
-    #print(i.get_movie(dark_matter_ID))
-    toy_story = media.Movie(i.get_movie(toyStoryID).get('title'),
+    toy_story_ID = '0114709'
+    toy_story_imdb = i.get_movie(toy_story_ID)
+    dDarko_ID = '0246578'
+    dDarko_imdb = i.get_movie(dDarko_ID)
+    bClub_ID = '0088847'
+    bClub_imdb = i.get_movie(bClub_ID)
+    dark_matter_ID = '4159076'
+    dark_matter_imdb = i.get_movie(dark_matter_ID)
+    seinfeld_ID = '0098904'
+    seinfeld_imdb = i.get_movie(seinfeld_ID)
+    game_of_thrones_ID = '0944947'
+    game_of_thrones_imdb = i.get_movie(game_of_thrones_ID)
+    #
+    # End of IMDb objects 
+    #
+
+    toy_story = media.Movie(toy_story_imdb.get('title'),
                             6300,
-                            i.get_movie(toyStoryID).get('rating'),
+                            toy_story_imdb.get('rating'),
                             "A story of a boy and his toys that come to life",
-                            "http://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg",
+                            toy_story_imdb.get('cover url'),
                             "https://www.youtube.com/watch?v=vwyZH85NQC4")
-    dDarko = media.Movie(i.get_movie(dDarkoID).get('title'),
+    dDarko = media.Movie(dDarko_imdb.get('title'),
                         6285,
-                        i.get_movie(dDarkoID).get('rating'),
-                        "Billy's favorite movie",
-                        "https://cinefilles.files.wordpress.com/2013/03/donnie-darko-poster-1.jpg",
+                        dDarko_imdb.get('rating'),
+                        "A troubled youth and his imaginary friend",
+                        dDarko_imdb.get('cover url'),
                         "https://www.youtube.com/watch?v=qdKbNuhXWvQ")
-    bClub = media.Movie(i.get_movie(bClubID).get('title'),
+    bClub = media.Movie(bClub_imdb.get('title'),
                         6787,
-                        i.get_movie(bClubID).get('rating'),
+                        bClub_imdb.get('rating'),
                         "Detention!",
-                        "https://cauchonphotoclass.edublogs.org/files/2013/06/the-breakfast-club-movie-poster-1985-1020468204-tfrwg0.jpg",
+                        bClub_imdb.get('cover url'),
                         "https://www.youtube.com/watch?v=ZXzlCpHK3-I")
 
-    dark_matter = media.TV_Show("Dark Matter",
+    dark_matter = media.TV_Show(dark_matter_imdb.get('title'),
                             3600,
-                            4,
-                            "A story of six people aboard a spaceship who have no idea who they are",
-                            "http://sharingseries.com/wp-content/uploads/2015/05/Dark-Matter-poster-SyFy-season-1-2015.jpg",
-                            15)
-    seinfeld = media.TV_Show("Seinfeld",
+                            dark_matter_imdb.get('rating'),
+                            "Six people aboard a spaceship have no idea who they are",
+                            dark_matter_imdb.get('cover url'),
+                            16)
+    seinfeld = media.TV_Show(seinfeld_imdb.get('title'),
                         1800,
-                        4,
+                        seinfeld_imdb.get('rating'),
                         "A show about nothing",
-                        "http://www.sonypictures.com/tv/seinfeld/assets/images/onesheet.jpg",
+                        seinfeld_imdb.get('cover url'),
                         180)
-    game_of_thrones = media.TV_Show("Game of Thrones",
+    game_of_thrones = media.TV_Show(game_of_thrones_imdb.get('title'),
                         3600,
-                        5,
-                        "A story of 7 kings vying for a seat on the iron throne",
-                        "http://coppergoose.com/static/uploaded/eggs/game-of-thrones-book-1.png",
+                        game_of_thrones_imdb.get('rating'),
+                        "7 kings vying for a seat on the iron throne",
+                        game_of_thrones_imdb.get('cover url'),
                         60)
 
     #Simply add movies to the movie list and tv shows to the tv shows list

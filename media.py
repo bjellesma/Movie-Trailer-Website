@@ -29,7 +29,7 @@ class Video():
         print("Title: "+self.title)
 
     def print_stars(self):
-        print("Stars: "+str(self.stars))
+        print("IMDb Rating: "+str(self.stars))
 
     def print_duration(self):
         print("Duration: "+str(self.duration))

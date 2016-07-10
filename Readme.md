@@ -1,14 +1,20 @@
 <h1>Table Of Contents</h1>
   <ul>
+    <li><a href="#What-is-this">What Is This</a></li>
     <li><a href="#Prerequisites">Prerequisites</a></li>
     <li><a href="#Quick-Start">Quick-Start</a></li>
     <li><a href="#About">About</a></li>
     <li><a href="#Author">Author</a></li>
     <li><a href="#Screenshot">Screenshot</a></li>
   </ul>
+<a name="What-is-this"><h1>What Is This</h1></a>
+  <p>This program will load a webpage of some favorited movies and TV Shows. A sample list is included with installation.
+  The movies will open up a trailer on youtube when clicked.
 <a name="Prerequisites"><h1>Prerequisites</h1></a>
   <ul>
     <li>Download and install <a href="https://www.python.org/downloads/">Python</a> (v2.7.x works best)</li>
+    <li><a href="https://www.python.org/downloads/">IMDbpY</a> is optional if you'd like to integrate a SQL database
+        as the imdb folder is included in the installation
   </ul>
 <a name="Quick-Start"><h1>Quick Start</h1></a>
 <ul>
