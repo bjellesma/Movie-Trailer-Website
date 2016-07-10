@@ -22,6 +22,6 @@
   on entertainment-center.py and read the documentation on adding objects. </p>
 <a name="Author"><h1>Author</h1></a>
   <p>This program is a project for Udacity's full stack developer nanodegree program.
-  This particular project was authored by William Jellesma</p>
+  This particular project was authored by William Jellesma. An API by IMDB called IMDbpY is also being used</p>
 <a name="Screenshot"><h1>Screenshot</h1></a>
 <img src="Sample.PNG" />
