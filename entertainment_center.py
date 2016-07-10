@@ -9,7 +9,7 @@ Adding Objects:
 Arg List for media.Movie:
     Movie Title: string
     Movie Duration (in seconds): integer
-    Movie Rating (out of 5): integer
+    Movie Rating (out of 10): integer
     Movie Storyline: String
     Movie Poster URL: string
     Movie Trailer: string
@@ -17,13 +17,14 @@ Arg List for media.Movie:
 Arg List for media.TV_Show:
     TV Show Title: string
     TV Show Runtime (in seconds): integer
-    TV Show Rating (out of 5): integer
+    TV Show Rating (out of 10): integer
     TV Show Storyline: String
     TV Show Poster URL: string
     TV Show Episodes: integer
 """
 import media
 import fresh_tomatoes
+import imdb
 
 def prep_movies(movies):
     """
@@ -43,21 +44,29 @@ def initObjects():
     """
     Function to initialize sample objects
     """
-    toy_story = media.Movie("Toy Story",
+    i = imdb.IMDb()
+    toyStoryID = '0114709'
+    dDarkoID = '0246578'
+    bClubID = '0088847'
+    #dark_matter_ID = '0159076'
+    #seinfeld_ID = '0098904'
+    #game_of_Thrones_ID = '0944947'
+    #print(i.get_movie(dark_matter_ID))
+    toy_story = media.Movie(i.get_movie(toyStoryID).get('title'),
                             6300,
-                            4,
+                            i.get_movie(toyStoryID).get('rating'),
                             "A story of a boy and his toys that come to life",
                             "http://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg",
                             "https://www.youtube.com/watch?v=vwyZH85NQC4")
-    dDarko = media.Movie("Donnie Darko",
+    dDarko = media.Movie(i.get_movie(dDarkoID).get('title'),
                         6285,
-                        4,
+                        i.get_movie(dDarkoID).get('rating'),
                         "Billy's favorite movie",
                         "https://cinefilles.files.wordpress.com/2013/03/donnie-darko-poster-1.jpg",
                         "https://www.youtube.com/watch?v=qdKbNuhXWvQ")
-    bClub = media.Movie("Breakfast Club",
+    bClub = media.Movie(i.get_movie(bClubID).get('title'),
                         6787,
-                        5,
+                        i.get_movie(bClubID).get('rating'),
                         "Detention!",
                         "https://cauchonphotoclass.edublogs.org/files/2013/06/the-breakfast-club-movie-poster-1985-1020468204-tfrwg0.jpg",
                         "https://www.youtube.com/watch?v=ZXzlCpHK3-I")

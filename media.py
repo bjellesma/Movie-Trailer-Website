@@ -14,7 +14,7 @@ class Video():
     Attributes:
         title: A string containing the title of the Video
         duration: An integer (in seconds) of the duration of the Video
-        stars: An integer (from 0 to 5) of the rating that you've given the Video
+        stars: A float (from 0 to 10) of the rating that you've given the Video
         storyline: A string containing the main story summation
         poster_image: A string containing a url of an image
     """
@@ -64,7 +64,7 @@ class Movie(Video):
     Attributes:
         title: A string containing the title of the Video
         duration: An integer (in seconds) of the duration of the Video
-        stars: An integer (from 0 to 5) of the rating that you've given the Video
+        stars: A float (from 0 to 10) of the rating that you've given the Video
         storyline: A string containing the main story summation
         poster_image: A string containing a url of an image
         trailer_youtube: A string containing a link to the youtube trailer
@@ -94,7 +94,7 @@ class TV_Show(Video):
     Attributes:
         title: A string containing the title of the Video
         duration: An integer (in seconds) of the duration of the Video
-        stars: An integer (from 0 to 5) of the rating that you've given the Video
+        stars: A float (from 0 to 10) of the rating that you've given the Video
         storyline: A string containing the main story summation
         poster_image: A string containing a url of an image
         trailer_youtube: A string containing a link to the youtube trailer
